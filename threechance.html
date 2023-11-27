@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent
+        {
+            width: 100%;
+            height: 800px;
+        }
+        .child
+        {
+            width: 47%;
+            height: 250px;
+            float: left;
+        }
+        .child2
+        {
+            width: 47%;
+            height: 250px;
+            float: right;
+        }
+        #h
+        {
+            background-color: darkcyan;
+            font-size: 22px;
+            color: white;
+            text-align: center;
+        }
+        .sp1
+        {
+            background-color: orange;
+            font-size: 22px;
+            color: white;
+            text-align: center;
+            width: 100%;
+        }
+        .sp2
+        {
+            background-color: tomato;
+            font-size: 22px;
+            color: white;
+            text-align: center;
+            margin-left: 10px;
+        }
+        #head1
+        {
+            background-color: orange;
+            font-size: 25px;
+            text-align: center;
+            width: 100%;
+            color: white;
+            font-weight: lighter;
+            margin-top: 0px;
+        }
+        #head2
+        {
+            background-color: tomato;
+            font-size: 25px;
+            text-align: center;
+            width: 100%;
+            color: white;
+            font-weight: lighter;
+            margin-top: 0px;
+        }
+        #btn1
+        {
+            top: 50px;
+        }
+        #winner
+        {
+            color: teal;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <h2 id="h">Three Chance Game</h2>
+        <h2 style="font-style: italic; font-size: 20px; text-align: center;">Game Started!!!</h2>
+        <h2 style="font-size: 20px; font-style: italic; color: blue; text-align: center;">Every Player Will Get 3 Chance Absolutely Fair</h2>
+        <hr>
+        <div class="child">
+            <h2 id="head1">Player 1</h2>
+            <span id="sp1" style="color: teal;"></span><br>
+            <span id="sp2" style="color: teal;"></span><br>
+            <span id="sp3" style="color: teal;"></span><br><br>
+            <span id="sumspan" style="color: tomato;"></span><br><br>
+            <span id="result"></span><br><br>
+            <input id="btn1" type="button" value="Start" onclick="process1()"/>
+        </div>
+        <div class="child2">
+            <h2 id="head2">Player 2</h2>
+            <span id="ssp1" style="color: teal;"></span><br>
+            <span id="ssp2" style="color: teal;"></span><br>
+            <span id="ssp3" style="color: teal;"></span><br><br>
+            <span id="ssumspan" style="color: tomato;"></span><br><br>
+            <span id="rresult"></span><br><br>
+            <input id="btn2" type="button" value="Start" onclick="process2()"/>
+        </div>
+        <div>
+            <h2 id="winner"></h2>
+        </div>
+    </div>
+    
+    
+</body>
+<script>
+    var sum1=0;
+    var sum2=0;
+    var result=0;
+    var c=0;
+    var nam1=prompt("Enter First Player name")
+    var nam2=prompt("Enter Second Player name")
+    document.getElementById("head1").innerHTML=nam1
+    document.getElementById("head2").innerHTML=nam2
+    document.getElementById("btn2").disabled=false;
+
+    function process1()
+    {
+        var d=Math.floor((Math.random() * 10) + 1);
+        sum1=sum1+d;
+
+        c=c+1;
+        if(c==1)
+        {
+            document.getElementById("sp1").innerHTML="Attempt 1 score is " + d;
+        }
+        if(c==2)
+        {
+            document.getElementById("sp2").innerHTML="Attempt 2 score is " + d;
+        }
+        if(c==3)
+        {
+            document.getElementById("sp3").innerHTML="Attempt 3 score is " + d;
+        }
+        if(c==3)
+        {
+            document.getElementById("sumspan").innerHTML="Total Score "+sum1
+            document.getElementById("result").innerHTML="Your all Attempts are ovver Now Player 2 will start.";
+            document.getElementById("btn1").disabled=true;
+            c=0;
+        } 
+    }
+
+
+    function process2()
+    {
+        var d=Math.floor((Math.random() * 10) + 1);
+        sum2=sum2+d;
+
+        c=c+1;
+        if(c==1)
+        {
+            document.getElementById("ssp1").innerHTML="Attempt 1 score is " + d;
+        }
+        if(c==2)
+        {
+            document.getElementById("ssp2").innerHTML="Attempt 2 score is " + d;
+        }
+        if(c==3)
+        {
+            document.getElementById("ssp3").innerHTML="Attempt 3 score is " + d;
+        }
+        if(c==3)
+        {
+            document.getElementById("ssumspan").innerHTML="Total Score "+sum2
+            document.getElementById("rresult").innerHTML="Your all attempt are over";
+            document.getElementById("btn2").disabled=true;
+            // if()
+            // {
+            //     document.getElementById("btn2").disabled=false;
+            // }
+            if(sum1>sum2)
+            {
+                document.getElementById("winner").innerHTML="Congratulation " +nam1+" is winner";
+            }
+            else
+            {
+                document.getElementById("winner").innerHTML="Congratulation " +nam2+" is winner";
+            }
+            // if(sum1<=sum2)
+            // {
+            //     document.getElementById("winner").innerHTML="Congratulation " +nam1+" is winner";
+            // }
+            if(sum1==sum2)
+            {
+                document.getElementById("winner").innerHTML="Game is drawn"
+            }
+            
+        }
+    }
+    
+
+</script>
+</html>

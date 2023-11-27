@@ -1,0 +1,11 @@
+const express = require("express")
+const app = express()
+app.listen(1025,function(req,res){
+    console.log("Server Started")
+}); 
+app.get("/",function(req,res){
+    res.send("<h2 style='color:red'>Server is responding..</h2>")
+});
+app.get("/Examresult",function(req,res){
+    res.send("Still result is awaited..")
+});
